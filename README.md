@@ -23,12 +23,14 @@ N개의 데이터가 있다면 메모리 공간은 N*자료형 만큼 할당된�
 ### Stack
 
 하노이의 탑과 같이 위로 쌓이는 자료들의 집합.
+
 Last In First Out
 
 
 ### Linked List
 
 하나의 노드가 다른 노드를 참조하는 방식으로 체이닝되어있는 노드들의 집합.
+
 노드를 단방향으로 참조할 수 도 있고, 양방향으로 참조할 수 도 있다.
 
 n개의 노드로 구성된 Linked List에서
@@ -49,6 +51,7 @@ n개의 노드로 구성된 Linked List에서
 ### Hash Table
 
 Key와 Value를 가지는 Dictionary타입의 자료형
+
 index를 key를 해싱하여 나온 값으로 배치
 
 index는 key와 array의 size를 
@@ -68,7 +71,7 @@ First In First Out
 
 자체적인 기준에 의한 우선순위를 비교하여 우선순위가 높은 아이템이 큐의 제일 앞으로 들어오게 된다.
 
-Heap을 이용해서 구현 가능.
+Max Heap을 이용해서 우선순위가 높은 순서대로의 Priority Queue를 만들 수 있다.
 
 **Double Ended Queue**
 
@@ -83,18 +86,90 @@ Heap을 이용해서 구현 가능.
 
 Root를 가지며 자식 노드들로 이루어지는 데이터들의 집합.
 
+트리의 순회방법엔
+- Pre-order
+- In-order
+- Post-order
 
+그리고
+- Level-order
 
-**Binary Search Tree**
+가 있다.
 
+코드 구현
+```JavaScript
+// Pre-order
+function preOrder(node){
+  console.log(node.data); // 첫 방문한 노드부터 출력
+  preOrder(node.left);
+  preOrder(node.right);
+}
 
+// In-order
+function inOrder(node){
+  inOrder(node.left);
+  console.log(node.data); // 왼쪽을 자식을 먼저 방문
+  inOrder(node.right);
+}
+
+// Post-order
+function postOrder(node){
+  postOrder(node.left);
+  postOrder(node.right);
+  console.log(node.data); // 자식들을 먼저 출력
+}
+
+```
+
+```JavaScript
+// Level-order
+function levelOrder(node){
+  let height = getHeight(node);
+  for (let i=0; i<height; i++)
+  	printLevel(node, i)
+}
+
+function printLevel(node, level){
+  if (!node) return;
+  if (level == 0)
+  	console.log(node.data);
+  else {
+    printLevel(node.left, level-1);
+    printLevel(node.right, level-1);
+  }
+}
+
+function getHeight(node){
+  if (!node) return 0
+  else {
+  	let heightL = height(node.left)
+  	let heightR = height(node.right)
+
+    if (lheight > rheight)
+	  return heightL+1
+    else
+      return heightR+1
+  }
+}
+```
 
 #### Binary Search Tree
 
+Binart search를 적용한 트리 구조이다.
+
+구조는 Binary tree의 구조를 따르며, 부모와 두 노드간에 값의 대소 관계는
+`왼쪽노드<부모노드<오른쪽노드`가 된다.
+
+탐색, 삽입, 제거에 모두 시간복잡도 O(log n)가 소모된다.
+
+이진 탐색의 방법에 따라 노드를 찾아가 삽입,제거가 이루어진다.
+
+
 #### Heap
 
+힙은 완전이진트리로 구성되며 값의 최소 혹은 최대의 순으로 정렬된다.
+Max힙의 경우, 모든 부모 노드는 자식노드보다 큰 값을 가지게 된다.
 
-
-
+힙 리스트(heap list)로 표현할 때 i번째 노드의 왼쪽 자식노드의 위치는 2i가 되며, i번째 노드의 오른쪽 자식노드의 위치는 2i+1이고, 또한 i번째 노드의 부모노드의 위치는 i/2가 된다.
 
 ## Algorithm
