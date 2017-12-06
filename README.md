@@ -50,12 +50,7 @@ n개의 노드로 구성된 Linked List에서
 
 ### Hash Table
 
-Key와 Value를 가지는 Dictionary타입의 자료형
-
-index를 key를 해싱하여 나온 값으로 배치
-
-index는 key와 array의 size를 
-
+index는 key와 array size를 인자로하는 해싱함수를 통해 나온 값으로 배치
 
 
 ### Queue
