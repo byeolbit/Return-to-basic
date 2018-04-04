@@ -120,6 +120,6 @@ nCp * n-pCq * rCr
 nHr = n+r-1Cr
 ```
 
-참고
-http://hochulshin.com/permutation-composition-summary
+참고 <br>
+http://hochulshin.com/permutation-composition-summary <br>
 http://mentalplex.blogspot.kr/2012/03/blog-post_22.html
